@@ -4,14 +4,18 @@
 
 TileMap::TileMap()
 {
+	mWidth = 42;
+	mHeight = 25;
+	create("level.txt", level, mWidth, mHeight);
 }
 
 
 TileMap::~TileMap()
 {
+	
 }
 
-bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height)
+bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, std::vector<int> level, unsigned int width, unsigned int height)
 {
 	// load the tileset texture
 	if (!m_tileset.loadFromFile(tileset))
@@ -26,7 +30,7 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int*
 		for (unsigned int j = 0; j < height; ++j)
 		{
 			// get the current tile number
-			int tileNumber = tiles[i + j * width];
+			int tileNumber = level[i + j * width];
 
 			// find its position in the tileset texture
 			int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
@@ -51,7 +55,26 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, const int*
 	return true;
 }
 
-//bool create(std::string fileData, std::string name)
-//{
-//	std::ifstream data(fileData, std::ios::in | std::ios::binary);
-//}
+bool TileMap::create(std::string fileData, std::vector<int>& level, int mWidth, int mHeight)
+{
+	std::fstream data(fileData, std::ios::in | std::ios::binary);
+
+	if (data.is_open())
+	{
+		
+		for (int i = 0; i < mWidth * mHeight; i++)
+		{
+			int j;
+			data >> j;
+			level.push_back(j);
+			std::cout << j;
+		}
+
+		return true;
+	}
+	
+	
+	return false;
+
+	
+}

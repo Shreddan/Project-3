@@ -6,13 +6,12 @@ struct TileMap : public sf::Drawable, public sf::Transformable
 	TileMap();
 	~TileMap();
 
+	int mWidth;
+	int mHeight;
+	//int mapSize = mWidth * mHeight;
 
-	bool load(const std::string& tileset, sf::Vector2u tileSize, const int* tiles, unsigned int width, unsigned int height);
-	
-	//bool create(std::string fileData, std::string name);
 
-	/*int getIndex(int x, int y);
-	bool getSolid(int x, int y);*/
+	bool load(const std::string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
@@ -26,9 +25,16 @@ struct TileMap : public sf::Drawable, public sf::Transformable
 		target.draw(m_vertices, states);
 	}
 
+	bool create(std::string fileData, std::vector<int>& level, int mWidth, int mHeight);
+
 	sf::VertexArray m_vertices;
 	sf::Texture m_tileset;
 
-	std::string sName;
-	sf::Sprite* pSprite;
+	std::string name;
+	std::vector<int> level;
+	std::string fileData;
+	
+
+	
+
 };

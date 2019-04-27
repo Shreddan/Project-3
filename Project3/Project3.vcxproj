@@ -148,6 +148,9 @@
     <Image Include="Overworld.png" />
     <Image Include="tileset.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="level.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
