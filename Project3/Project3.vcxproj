@@ -132,6 +132,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnimationManager.cpp" />
+    <ClCompile Include="GameStates.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
@@ -140,7 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationManager.h" />
+    <ClInclude Include="GameStates.h" />
     <ClInclude Include="includes.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="TileMap.h" />
   </ItemGroup>
   <ItemGroup>

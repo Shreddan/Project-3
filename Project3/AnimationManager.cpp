@@ -29,4 +29,35 @@ void AnimationManager::addFrames1(std::vector<sf::IntRect>& frames, sf::IntRect 
 
 }
 
-//void frameLoop(int currentFrame, int nrofFrames, )
+void AnimationManager::frameloop(sf::Sprite& sprite1, float dirX, float dirY , std::vector<sf::IntRect>& frames, std::vector<sf::IntRect>& frames1)
+{
+	int index = 0;
+
+	if (dirY == -3.f)
+	{
+		index = 0 + (currentFrame / 10) % 3;
+	}
+	else if (dirY == 3.f)
+	{
+		index = 3 + (currentFrame / 10) % 3;
+	}
+	else if (dirX == -3.f)
+	{
+		index = 6 + (currentFrame / 10) % 2;
+	}
+	else if (dirX == 3.f)
+	{
+		index = 8 + (currentFrame / 10) % 2;
+	}
+	else
+	{
+		index = 3;
+	}
+
+
+
+	sprite1.setTextureRect(frames[index]);
+
+	currentFrame++;
+}
+

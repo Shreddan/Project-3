@@ -3,15 +3,26 @@
 
 struct TileMap : public sf::Drawable, public sf::Transformable
 {
+	enum TileType
+	{
+		Tile_Passable,
+		Tile_Impassable
+	};
+
+
 	TileMap();
 	~TileMap();
+
+	int tileNumber;
+
+	int tileType;
 
 	int mWidth;
 	int mHeight;
 	//int mapSize = mWidth * mHeight;
 
 
-	bool load(const std::string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, unsigned int width, unsigned int height);
+	bool load(const std::string& tileset, sf::Vector2u tileSize, std::vector<int> tiles, int width, int height, int& tileNumber);
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{

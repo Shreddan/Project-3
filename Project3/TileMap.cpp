@@ -4,8 +4,8 @@
 
 TileMap::TileMap()
 {
-	mWidth = 42;
-	mHeight = 25;
+	mWidth = 45;
+	mHeight = 31;
 	create("level.txt", level, mWidth, mHeight);
 }
 
@@ -15,7 +15,7 @@ TileMap::~TileMap()
 	
 }
 
-bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, std::vector<int> level, unsigned int width, unsigned int height)
+bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, std::vector<int> level, int width, int height, int& tileNumber)
 {
 	// load the tileset texture
 	if (!m_tileset.loadFromFile(tileset))
@@ -26,11 +26,12 @@ bool TileMap::load(const std::string& tileset, sf::Vector2u tileSize, std::vecto
 	m_vertices.resize(width * height * 4);
 
 	// populate the vertex array, with one quad per tile
-	for (unsigned int i = 0; i < width; ++i)
-		for (unsigned int j = 0; j < height; ++j)
+	for (int i = 0; i < width; ++i)
+		for (int j = 0; j < height; ++j)
 		{
 			// get the current tile number
-			int tileNumber = level[i + j * width];
+			tileNumber = level[i + j * width];
+			
 
 			// find its position in the tileset texture
 			int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
@@ -67,7 +68,7 @@ bool TileMap::create(std::string fileData, std::vector<int>& level, int mWidth, 
 			int j;
 			data >> j;
 			level.push_back(j);
-			std::cout << j;
+			//std::cout << j;
 		}
 
 		return true;
