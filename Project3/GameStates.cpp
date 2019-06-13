@@ -190,12 +190,23 @@ void GameStates::DrawState(sf::Sprite& sprite1, Input& input, sf::RenderWindow& 
 			quest.setFont(font1);
 			quest.setFillColor(sf::Color(sf::Color(212, 175, 55)));
 			quest.setString("Quest Log");
-			quest.setCharacterSize(80);
+			quest.setCharacterSize(70);
 			quest.setPosition(600.f, 10.f);
+
+			sf::Text inprog;
+			inprog.setFont(font1);
+			inprog.setFillColor(sf::Color(sf::Color(0, 100, 0)));
+			inprog.setString("In Progress");
+			inprog.setCharacterSize(50);
+			inprog.setPosition(100.f, 100.f);
+			inprog.setStyle(sf::Text::Underlined);
+
 
 			window.clear(sf::Color(sf::Color(220, 220, 220)));
 			window.setView(defview);
 			window.draw(quest);
+			window.draw(inprog);
+
 			
 
 			break;
