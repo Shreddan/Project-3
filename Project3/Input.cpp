@@ -21,10 +21,10 @@ Input::~Input()
 {
 }
 
-void Input::Inputs(sf::Sprite& sprite1, sf::RenderWindow& window, float& dirX, float& dirY)
+void Input::Inputs(sf::Sprite& sprite1, sf::RenderWindow& window, float& dirX, float& dirY, int height, int width)
 {
 	
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && sprite1.getPosition().y > 0)
 	{
 		std::cout << "W key Pressed!" << std::endl;
 		dirY = -3.f;
@@ -34,7 +34,7 @@ void Input::Inputs(sf::Sprite& sprite1, sf::RenderWindow& window, float& dirX, f
 		}
 
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && sprite1.getPosition().y < height + 85)
 	{
 		std::cout << "S key Pressed!" << std::endl;
 		dirY = 3.f;
@@ -42,8 +42,9 @@ void Input::Inputs(sf::Sprite& sprite1, sf::RenderWindow& window, float& dirX, f
 		{
 			dirY = 3.f;
 		}
+		
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sprite1.getPosition().x > 45)
 	{
 		std::cout << "A key Pressed!" << std::endl;
 		dirX = -3.f;
@@ -52,7 +53,7 @@ void Input::Inputs(sf::Sprite& sprite1, sf::RenderWindow& window, float& dirX, f
 			dirX = -3.f;
 		}
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && sprite1.getPosition().x < width - 100)
 	{
 		std::cout << "D key Pressed!" << std::endl;
 		dirX = 3.f;

@@ -61,8 +61,19 @@
     <ClInclude Include="Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="level.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Project3.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="diffuse.vert" />
   </ItemGroup>
 </Project>

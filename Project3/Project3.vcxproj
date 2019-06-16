@@ -145,6 +145,7 @@
     <ClInclude Include="GameStates.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="TileMap.h" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,12 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="level.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Project3.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="diffuse.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

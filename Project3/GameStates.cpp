@@ -23,16 +23,21 @@ sf::View GameStates::updateView(sf::View& view1, sf::Sprite sprite1)
 
 	return view1;
 }
-void GameStates::GameLoop(Input& input, sf::Sprite& sprite1, sf::RenderWindow& window, TileMap& map, sf::Font font1,  AnimationManager& animMan, sf::View& defview)
+void GameStates::GameLoop(Input& input, sf::Sprite& sprite1, sf::RenderWindow& window, TileMap& map, sf::Font font1,  AnimationManager& animMan, sf::View& defview, int height, int width)
 {
 
 	defview = window.getDefaultView();
 
-	sf::View view1(sf::FloatRect(300.f, 300.f, 1400.f, 700.f));
+	pCameraWidth = 200.f;
+	pCameraHeight = pCameraWidth * 9 / 16;
+
+	sf::View view1(sf::FloatRect(pCameraWidth, pCameraHeight, width, height));
+	view1.zoom(0.5f);
 
 
 	animMan.addFrames1(animMan.frames, sf::IntRect(32, 32, 32, 32), sf::IntRect(0, 64, 32, 32), sf::IntRect(32, 64, 32, 32), sf::IntRect(0, 0, 32, 32), sf::IntRect(32, 0, 32, 32), sf::IntRect(0, 32, 32, 32), sf::IntRect(0, 128, 32, 32), sf::IntRect(32, 128, 32, 32), sf::IntRect(0, 96, 32, 32), sf::IntRect(32, 96, 32, 32));
 	animMan.addFrames1(animMan.frames1, sf::IntRect(32, 512, 32, 32), sf::IntRect(0, 544, 32, 32), sf::IntRect(32, 544, 32, 32), sf::IntRect(0, 480, 32, 32), sf::IntRect(0, 512, 32, 32), sf::IntRect(32, 480, 32, 32), sf::IntRect(0, 576, 32, 32), sf::IntRect(32, 576, 32, 32), sf::IntRect(0, 608, 32, 32), sf::IntRect(32, 608, 32, 32));
+
 
 	while (window.isOpen())
 	{
@@ -49,7 +54,7 @@ void GameStates::GameLoop(Input& input, sf::Sprite& sprite1, sf::RenderWindow& w
 			}
 			else if (GameState == GameScreen)
 			{
-				input.Inputs(sprite1, window, input.dirX, input.dirY);
+				input.Inputs(sprite1, window, input.dirX, input.dirY, height, width);
 				updateView(view1, sprite1);
 			}
 			
@@ -168,13 +173,15 @@ void GameStates::DrawState(sf::Sprite& sprite1, Input& input, sf::RenderWindow& 
 			break;
 		}
 
-		case Intro:
+		case ThroneRoom:
 		{
 
 		}
 
 		case GameScreen:
 		{
+			
+
 			
 			window.setView(view1);
 			window.clear();
@@ -206,8 +213,6 @@ void GameStates::DrawState(sf::Sprite& sprite1, Input& input, sf::RenderWindow& 
 			window.setView(defview);
 			window.draw(quest);
 			window.draw(inprog);
-
-			
 
 			break;
 		}

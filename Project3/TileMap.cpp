@@ -4,8 +4,8 @@
 
 TileMap::TileMap()
 {
-	mWidth = 45;
-	mHeight = 31;
+	mWidth = 50;
+	mHeight = 35;
 	create("level.txt", level, mWidth, mHeight);
 }
 
